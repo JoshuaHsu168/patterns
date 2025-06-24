@@ -5,7 +5,13 @@
  * @returns `0` if n is 0 or negative
  */
 export function sumToN(n) {
-  if (typeof n !== "number") return NaN;
+  if (typeof n !== "number"){ 
+    return NaN;
+  }
+
+  if (n <= 0) {
+    return 0;
+  }
 
   let sum = 0;
   for (let i = 1; i <= n; i++) {
@@ -23,6 +29,20 @@ export function sumToN(n) {
  */
 export function factorial(n) {
   // TODO
+  if (typeof n !== "number") {
+    return NaN;
+  }
+  if (n < 0) {
+    return undefined;
+  }
+  if (n === 0){
+    return 1;
+  }
+  let product = 1;
+  for (let i=1; i <= n; i++){
+    product = product * i;
+  }
+  return product;
 }
 
 /**
@@ -33,6 +53,20 @@ export function factorial(n) {
  */
 export function buildNArray(n) {
   // TODO
+    if (typeof n !== "number"){
+    return null;
+  }
+
+    if (n <= 0){
+    return [];
+  }
+
+  let numbers = [];
+  for (let i = 1; i <= n; i++) {
+    numbers.push(i);
+  }
+
+  return numbers;  
 }
 
 /**
@@ -41,6 +75,14 @@ export function buildNArray(n) {
  */
 export function getLongestString(strings) {
   // TODO
+  const longestString = strings.reduce((longestSoFar, currentString) => {
+    if (currentString.length > longestSoFar.length) {
+      return currentString;
+      } else {
+        return longestSoFar;
+      }
+      }, "");
+      return longestString;
 }
 
 /**
@@ -49,6 +91,13 @@ export function getLongestString(strings) {
  */
 export function countPresent(attendance) {
   // TODO
+  let presentCount = 0;
+  for (const isPresent of attendance) {
+    if (isPresent === true) {
+      presentCount++;
+    }
+  }
+  return presentCount;
 }
 
 /**
@@ -63,4 +112,28 @@ export function countPresent(attendance) {
  */
 export function complementDNA(dna) {
   // TODO
+  if (typeof dna !== 'string') {
+    return null;
+  }
+
+  let complementaryStrand = '';
+
+  for (const base of dna) {
+    switch (base) {
+      case 'A':
+        complementaryStrand += 'T';
+        break;
+      case 'T':
+        complementaryStrand += 'A';
+        break;
+      case 'C':
+        complementaryStrand += 'G';
+        break;
+      case 'G':
+        complementaryStrand += 'C';
+        break;
+    }
+  }
+
+  return complementaryStrand;
 }
